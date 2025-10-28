@@ -4,7 +4,7 @@
 // - protoc             v6.32.1
 // source: transaction.proto
 
-package proto
+package RiskOS
 
 import (
 	context "context"

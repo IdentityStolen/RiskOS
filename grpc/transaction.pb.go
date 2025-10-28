@@ -4,7 +4,7 @@
 // 	protoc        v6.32.1
 // source: transaction.proto
 
-package proto
+package RiskOS
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -173,7 +173,7 @@ const file_transaction_proto_rawDesc = "" +
 	"\rTransResponce\x12\x13\n" +
 	"\x05is_ok\x18\x01 \x01(\bR\x04isOk2?\n" +
 	"\vRiskChecker\x120\n" +
-	"\rTransScrutiny\x12\r.TransRequest\x1a\x0e.TransResponce\"\x00B(Z&github.com/IdentityStolen/RiskOS/protob\x06proto3"
+	"\rTransScrutiny\x12\r.TransRequest\x1a\x0e.TransResponce\"\x00B\"Z github.com/IdentityStolen/RiskOSb\x06proto3"
 
 var (
 	file_transaction_proto_rawDescOnce sync.Once

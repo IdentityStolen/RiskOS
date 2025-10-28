@@ -1,5 +1,5 @@
 gen_from_proto:
-    cd grpc && \
-	protoc --go_out=. --go_opt=paths=source_relative \
-    --go-grpc_out=. --go-grpc_opt=paths=source_relative \
-    ../proto/transaction.proto
+	protoc --proto_path=proto \
+  --go_out=grpc --go_opt=module=github.com/IdentityStolen/RiskOS \
+  --go-grpc_out=grpc --go-grpc_opt=module=github.com/IdentityStolen/RiskOS \
+  proto/transaction.proto

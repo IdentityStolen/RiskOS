@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option go_package = "github.com/IdentityStolen/RiskOS/proto";
+option go_package = "github.com/IdentityStolen/RiskOS";
 
 service RiskChecker {
   rpc TransScrutiny (TransRequest) returns (TransResponce) {}
