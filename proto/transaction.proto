@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option go_package = "github.com/IdentityStolen/RiskOS/proto";
+
+service RiskChecker {
+  rpc TransScrutiny (TransRequest) returns (TransResponce) {}
+}
+
+message TransRequest {
+    string user_id = 1;
+    int32 latitude = 2;
+    int32 longitude = 3;
+    int32 amount = 4;
+    bool transfer_type = 5;
+    string from_id = 6;
+    string to_id = 7;
+}
+
+message TransResponce {
+    bool is_ok = 1;
+}
