@@ -7,11 +7,17 @@ service RiskChecker {
 }
 
 message TransRequest {
+    enum TransferType {
+      UNDEFINED = 0;
+      ACH = 1;
+      EXTERNAL = 2;
+    }
+
     string user_id = 1;
-    int32 latitude = 2;
-    int32 longitude = 3;
-    int32 amount = 4;
-    bool transfer_type = 5;
+    float latitude = 2;
+    float longitude = 3;
+    float amount = 4;
+    TransferType transfer_type = 5;
     string from_id = 6;
     string to_id = 7;
 }

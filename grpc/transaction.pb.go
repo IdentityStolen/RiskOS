@@ -21,15 +21,64 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type TransRequest_TransferType int32
+
+const (
+	TransRequest_UNDEFINED TransRequest_TransferType = 0
+	TransRequest_ACH       TransRequest_TransferType = 1
+	TransRequest_EXTERNAL  TransRequest_TransferType = 2
+)
+
+// Enum value maps for TransRequest_TransferType.
+var (
+	TransRequest_TransferType_name = map[int32]string{
+		0: "UNDEFINED",
+		1: "ACH",
+		2: "EXTERNAL",
+	}
+	TransRequest_TransferType_value = map[string]int32{
+		"UNDEFINED": 0,
+		"ACH":       1,
+		"EXTERNAL":  2,
+	}
+)
+
+func (x TransRequest_TransferType) Enum() *TransRequest_TransferType {
+	p := new(TransRequest_TransferType)
+	*p = x
+	return p
+}
+
+func (x TransRequest_TransferType) String() string {
+	return protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))
+}
+
+func (TransRequest_TransferType) Descriptor() protoreflect.EnumDescriptor {
+	return file_transaction_proto_enumTypes[0].Descriptor()
+}
+
+func (TransRequest_TransferType) Type() protoreflect.EnumType {
+	return &file_transaction_proto_enumTypes[0]
+}
+
+func (x TransRequest_TransferType) Number() protoreflect.EnumNumber {
+	return protoreflect.EnumNumber(x)
+}
+
+// Deprecated: Use TransRequest_TransferType.Descriptor instead.
+func (TransRequest_TransferType) EnumDescriptor() ([]byte, []int) {
+	return file_transaction_proto_rawDescGZIP(), []int{0, 0}
+}
+
 type TransRequest struct {
-	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
-	Latitude      int32                  `protobuf:"varint,2,opt,name=latitude,proto3" json:"latitude,omitempty"`
-	Longitude     int32                  `protobuf:"varint,3,opt,name=longitude,proto3" json:"longitude,omitempty"`
-	Amount        int32                  `protobuf:"varint,4,opt,name=amount,proto3" json:"amount,omitempty"`
-	TransferType  bool                   `protobuf:"varint,5,opt,name=transfer_type,json=transferType,proto3" json:"transfer_type,omitempty"`
-	FromId        string                 `protobuf:"bytes,6,opt,name=from_id,json=fromId,proto3" json:"from_id,omitempty"`
-	ToId          string                 `protobuf:"bytes,7,opt,name=to_id,json=toId,proto3" json:"to_id,omitempty"`
+	state         protoimpl.MessageState    `protogen:"open.v1"`
+	UserId        string                    `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	Latitude      float32                   `protobuf:"fixed32,2,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	Longitude     float32                   `protobuf:"fixed32,3,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	Amount        float32                   `protobuf:"fixed32,4,opt,name=amount,proto3" json:"amount,omitempty"`
+	TransferType  TransRequest_TransferType `protobuf:"varint,5,opt,name=transfer_type,json=transferType,proto3,enum=TransRequest_TransferType" json:"transfer_type,omitempty"`
+	FromId        string                    `protobuf:"bytes,6,opt,name=from_id,json=fromId,proto3" json:"from_id,omitempty"`
+	ToId          string                    `protobuf:"bytes,7,opt,name=to_id,json=toId,proto3" json:"to_id,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -71,32 +120,32 @@ func (x *TransRequest) GetUserId() string {
 	return ""
 }
 
-func (x *TransRequest) GetLatitude() int32 {
+func (x *TransRequest) GetLatitude() float32 {
 	if x != nil {
 		return x.Latitude
 	}
 	return 0
 }
 
-func (x *TransRequest) GetLongitude() int32 {
+func (x *TransRequest) GetLongitude() float32 {
 	if x != nil {
 		return x.Longitude
 	}
 	return 0
 }
 
-func (x *TransRequest) GetAmount() int32 {
+func (x *TransRequest) GetAmount() float32 {
 	if x != nil {
 		return x.Amount
 	}
 	return 0
 }
 
-func (x *TransRequest) GetTransferType() bool {
+func (x *TransRequest) GetTransferType() TransRequest_TransferType {
 	if x != nil {
 		return x.TransferType
 	}
-	return false
+	return TransRequest_UNDEFINED
 }
 
 func (x *TransRequest) GetFromId() string {
@@ -161,15 +210,19 @@ var File_transaction_proto protoreflect.FileDescriptor
 
 const file_transaction_proto_rawDesc = "" +
 	"\n" +
-	"\x11transaction.proto\"\xcc\x01\n" +
+	"\x11transaction.proto\"\x9e\x02\n" +
 	"\fTransRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x1a\n" +
-	"\blatitude\x18\x02 \x01(\x05R\blatitude\x12\x1c\n" +
-	"\tlongitude\x18\x03 \x01(\x05R\tlongitude\x12\x16\n" +
-	"\x06amount\x18\x04 \x01(\x05R\x06amount\x12#\n" +
-	"\rtransfer_type\x18\x05 \x01(\bR\ftransferType\x12\x17\n" +
+	"\blatitude\x18\x02 \x01(\x02R\blatitude\x12\x1c\n" +
+	"\tlongitude\x18\x03 \x01(\x02R\tlongitude\x12\x16\n" +
+	"\x06amount\x18\x04 \x01(\x02R\x06amount\x12?\n" +
+	"\rtransfer_type\x18\x05 \x01(\x0e2\x1a.TransRequest.TransferTypeR\ftransferType\x12\x17\n" +
 	"\afrom_id\x18\x06 \x01(\tR\x06fromId\x12\x13\n" +
-	"\x05to_id\x18\a \x01(\tR\x04toId\"$\n" +
+	"\x05to_id\x18\a \x01(\tR\x04toId\"4\n" +
+	"\fTransferType\x12\r\n" +
+	"\tUNDEFINED\x10\x00\x12\a\n" +
+	"\x03ACH\x10\x01\x12\f\n" +
+	"\bEXTERNAL\x10\x02\"$\n" +
 	"\rTransResponce\x12\x13\n" +
 	"\x05is_ok\x18\x01 \x01(\bR\x04isOk2?\n" +
 	"\vRiskChecker\x120\n" +
@@ -187,19 +240,22 @@ func file_transaction_proto_rawDescGZIP() []byte {
 	return file_transaction_proto_rawDescData
 }
 
+var file_transaction_proto_enumTypes = make([]protoimpl.EnumInfo, 1)
 var file_transaction_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_transaction_proto_goTypes = []any{
-	(*TransRequest)(nil),  // 0: TransRequest
-	(*TransResponce)(nil), // 1: TransResponce
+	(TransRequest_TransferType)(0), // 0: TransRequest.TransferType
+	(*TransRequest)(nil),           // 1: TransRequest
+	(*TransResponce)(nil),          // 2: TransResponce
 }
 var file_transaction_proto_depIdxs = []int32{
-	0, // 0: RiskChecker.TransScrutiny:input_type -> TransRequest
-	1, // 1: RiskChecker.TransScrutiny:output_type -> TransResponce
-	1, // [1:2] is the sub-list for method output_type
-	0, // [0:1] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	0, // 0: TransRequest.transfer_type:type_name -> TransRequest.TransferType
+	1, // 1: RiskChecker.TransScrutiny:input_type -> TransRequest
+	2, // 2: RiskChecker.TransScrutiny:output_type -> TransResponce
+	2, // [2:3] is the sub-list for method output_type
+	1, // [1:2] is the sub-list for method input_type
+	1, // [1:1] is the sub-list for extension type_name
+	1, // [1:1] is the sub-list for extension extendee
+	0, // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_transaction_proto_init() }
@@ -212,13 +268,14 @@ func file_transaction_proto_init() {
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_transaction_proto_rawDesc), len(file_transaction_proto_rawDesc)),
-			NumEnums:      0,
+			NumEnums:      1,
 			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
 		GoTypes:           file_transaction_proto_goTypes,
 		DependencyIndexes: file_transaction_proto_depIdxs,
+		EnumInfos:         file_transaction_proto_enumTypes,
 		MessageInfos:      file_transaction_proto_msgTypes,
 	}.Build()
 	File_transaction_proto = out.File
